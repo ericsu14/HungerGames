@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 public class Team {
 
-    private final String name;
+    private String name;
     private final UUID leader;
     private final List<UUID> players = new ArrayList<>();
     private final List<UUID> pending = new ArrayList<>();
@@ -122,6 +122,13 @@ public class Team {
     public String getName() {
         return name;
     }
+
+    /**
+     * Changes the name of this team to a new name
+     *
+     * @param name New team name
+     */
+    public void setName (String name) { this.name = name; }
 
     /**
      * Send a message to all members of this team

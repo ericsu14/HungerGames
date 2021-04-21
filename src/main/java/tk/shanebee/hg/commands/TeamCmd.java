@@ -42,6 +42,28 @@ public class TeamCmd extends BaseCmd {
                 String exists = lang.team_already_have.replace("<name>", team.getName());
                 Util.scm(player, exists);
             }
+        } else if (args[1].equalsIgnoreCase("rename")) {
+            Team team = pd.getTeam();
+            if (team != null) {
+                String newTeamName = args.length == 3 ? args[2] : player.getName();
+                GamePlayerData gamePlayerData = game.getGamePlayerData();
+
+                if (gamePlayerData.hasTeam(newTeamName)) {
+                    String exists = lang.team_already_exists.replace("<name>", newTeamName);
+                    Util.scm(player, exists);
+                    return true;
+                }
+
+                // Ensures that only the team leader can change the team name
+                if (!team.getLeader().equals(this.player.getUniqueId())) {
+                    // TODO: Output message that only the team leader can change the team name
+                    return true;
+                }
+
+                String created = lang.team_rename_success.replace ("<name>", newTeamName);
+                team.setName(newTeamName);
+                Util.scm (player, created);
+            }
         } else if (args[1].equalsIgnoreCase("invite")) {
             if (args.length >= 3) {
                 Team team = pd.getTeam();

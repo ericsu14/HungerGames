@@ -58,6 +58,7 @@ public class Language {
     public String team_created;
     public String team_already_exists;
     public String team_already_have;
+    public String team_rename_success;
     public String team_none;
     public String chest_drop_1;
     public String chest_drop_2;
@@ -291,6 +292,7 @@ public class Language {
         team_created = lang.getString("team-created");
         team_already_exists = lang.getString("team-already-exists");
         team_already_have = lang.getString("team-already-have");
+        team_rename_success = lang.getString ("team-rename-success");
         team_none = lang.getString("team-none");
 
         chest_drop_1 = lang.getString("chest-drop-1");
